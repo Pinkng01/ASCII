@@ -13,5 +13,5 @@ def renderScreenList(ScrList):
         
 
 
-scrList = [[Vertex(" ") for i in range(20)] for k in range(20)]
+scrList = [[Vertex(":") for i in range(20)] for k in range(20)]
 renderScreenList(scrList)
