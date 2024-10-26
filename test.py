@@ -17,9 +17,12 @@ def renderScreenList(ScrList: List[str]):
         print("")
         for k in range(len(ScrList[i])):
             print(str(ScrList[i][k].alpha), end="")
-        
-height: int = 40
-widnth: int = 120
+
+def sysClear():
+    print('\033[40A\033[2K', end='')
+
+height: int = os.get_terminal_size().lines
+widnth: int = os.get_terminal_size().columns
 amplitude: float = height / 2.0 - 1 
 freq: float = 2.0
 
@@ -35,11 +38,11 @@ while(True):
     angle: float = freq * (2.0 * math.pi * x/widnth)
     y: float = int(amplitude * ( 1 + math.cos(angle)))
     y1: float = int(amplitude * ( 1 + math.sin(angle)))
-    scrList[y][x].alpha = '='
-    scrList[y1][x].alpha = '='
+    scrList[y][x].alpha = '8'
+    scrList[y1][x].alpha = '.'
     renderScreenList(scrList)
     time.sleep(0.1)
-    os.system('cls')
+    sysClear()
     try:
         if(keyboard.is_pressed('q')):
            break
